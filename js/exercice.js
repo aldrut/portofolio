@@ -54,14 +54,11 @@ let nb = prompt("Saisissez un nombre ?");
 
 //alert(pair == 0 ? "Chiffre pair" : "chiffre impair");
 
-let rst = Math.sign(nb);
-
-
-if(rst > 0)
+if(nb > 0)
 {
     alert("positif");
 }
-else if(rst <0)
+else if(nb <0)
 {
     alert("négatif");
 }
