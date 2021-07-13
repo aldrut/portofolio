@@ -33,9 +33,9 @@
 
 // for (let i = 0; i <= 10; i++)
 // {
-    
+
 //     table = i.toString() + " x " + chiffre.toString() + " = " + i * parseInt(chiffre);
-    
+
 //     console.log(table);
 // }
 
@@ -67,6 +67,51 @@
 //On demande le jour, puis le mois, puis l'année et on vérifie enfin que cette date est correcte.
 
 
+// function treatDate()
+// {
 
+// }
+
+// let annee = Number(prompt("Saisir une annee"));
+
+// let bi = false;
+// if(annee % 4 == 0)
+// {
+// bi = true;
+// }
+
+// alert(bi);
+
+//EXO demander la saisie d'une phrase
+//lui indiquer combien de consonnes et de voyelles
+
+let maPhrase = prompt("Ecrivez une phrase svp ?");
+let total = maPhrase.length;
+let cpt;
+let consonne;
+
+function voyelleConsonne(value) 
+{
+    
+    let voyelles = ["a", "e", "i", "o", "u", "y"];
+
+    for (let i = 0; i < value.length; i++) 
+    {
+        for(let y =0; y < voyelles.length; y++)
+        {
+            if(value[i] == voyelles[y])
+            {
+                cpt++;
+            }
+        }
+       return cpt;
+    }
+    consonne = total - cpt; 
+}
+
+
+voyelleConsonne(maPhrase);
+alert(cpt);
+alert(consonne);
 
 
