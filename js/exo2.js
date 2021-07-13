@@ -39,28 +39,34 @@
 //     console.log(table);
 // }
 
-let photocopie = Number(prompt('Combien de photocopie ?'));
-let photocopie10 = photocopie * Number(0.1);
-let photocopie40 = ((photocopie - Number(10)) * Number(0.08) + Number(1)) ;
-let photocopieplus = ((photocopie - Number(40)) * Number(0.05) + Number(3.4)) ;
+// let photocopie = Number(prompt('Combien de photocopie ?'));
+// let photocopie10 = photocopie * Number(0.1);
+// let photocopie40 = ((photocopie - Number(10)) * Number(0.08) + Number(1)) ;
+// let photocopieplus = ((photocopie - Number(40)) * Number(0.05) + Number(3.4)) ;
 
-if(photocopie <= 10)
-{
-    alert("Pour " + photocopie + " photocopies, cela fait " + photocopie10 + '€');
-}
-else if(photocopie > 10 && photocopie <=40)
-{
-    alert("Pour " + photocopie + " photocopies, cela fait " + photocopie40 + '€');
-}
-else if(photocopie > 40)
-{
-    alert("Pour " + photocopie + " photocopies, cela fait " + photocopieplus + '€');
-}
-else
-{
-    alert("je n'ai pas compris");
+// if(photocopie <= 10)
+// {
+//     alert("Pour " + photocopie + " photocopies, cela fait " + photocopie10 + '€');
+// }
+// else if(photocopie > 10 && photocopie <=40)
+// {
+//     alert("Pour " + photocopie + " photocopies, cela fait " + photocopie40 + '€');
+// }
+// else if(photocopie > 40)
+// {
+//     alert("Pour " + photocopie + " photocopies, cela fait " + photocopieplus + '€');
+// }
+// else
+// {
+//     alert("je n'ai pas compris");
 
 
-}
+// }
+
+// Exo JS : Demander à l'utilisateur de saisir une date puis vérifier que celle-ci est exacte. 
+//On demande le jour, puis le mois, puis l'année et on vérifie enfin que cette date est correcte.
+
+
+
 
 
