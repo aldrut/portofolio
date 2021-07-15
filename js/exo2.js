@@ -198,43 +198,73 @@
 
 
 
-let tabNotes = [];
-let noteCandidat;
+// let tabNotes = [];
+// let noteCandidat;
 
-let nbNote = prompt("combien de note voulez vous saisir ?");
+// let nbNote = prompt("combien de note voulez vous saisir ?");
 
-for(let i = 1; i <= nbNote; i++)
+// for(let i = 1; i <= nbNote; i++)
+// {
+//     noteCandidat = prompt("Veuillez saisir la note de l'élève n° " + i); 
+//     while(!parseFloat(noteCandidat) || parseFloat(noteCandidat)< 0 || parseFloat(noteCandidat)>20)
+//     {
+//         noteCandidat = prompt("Veuillez saisir la note de l'élève n° " + i); 
+//     }
+//     tabNotes.push(noteCandidat);
+// }
+
+// let sumNotes = totalNotes(tabNotes);
+
+// let moyenne = (parseFloat(sumNotes) / tabNotes.length);
+
+// console.log("Votre moyenne est de {0}. La note la plus haute est {1} et la plus basse est {2}".replace("{0}",parseFloat(moyenne))
+// .replace("{1}", Math.max(...tabNotes))
+// .replace("{2}", Math.min(...tabNotes)));
+
+
+
+
+// function totalNotes(tableau)
+// {
+//     let sum = 0;
+//     for(let i = 0; i < tableau.length; i++)
+//     {
+//        sum += parseFloat(tabNotes[i]);
+//     }
+//     return sum;
+// }
+
+
+// let a = 123.32;
+
+// console.log(parseFloat(a).toFixed(1));
+
+function getRandomPrice(min, max)
 {
-    noteCandidat = prompt("Veuillez saisir la note de l'élève n° " + i); 
-    while(!parseFloat(noteCandidat) || parseFloat(noteCandidat)< 0 || parseFloat(noteCandidat)>20)
-    {
-        noteCandidat = prompt("Veuillez saisir la note de l'élève n° " + i); 
-    }
-    tabNotes.push(noteCandidat);
+    return Math.random() * (max-min)+min;
 }
 
-let sumNotes = totalNotes(tabNotes);
-
-let moyenne = (parseFloat(sumNotes) / tabNotes.length);
-
-console.log("Votre moyenne est de {0}. La note la plus haute est {1} et la plus basse est {2}".replace("{0}",parseFloat(moyenne))
-.replace("{1}", Math.max(...tabNotes))
-.replace("{2}", Math.min(...tabNotes)));
+let price = getRandomPrice(0.5,1.5).toFixed(1);
 
 
-
-
-function totalNotes(tableau)
+let votreChoix = prompt("Votre choix");
+while (votreChoix == "" )
 {
-    let sum = 0;
-    for(let i = 0; i < tableau.length; i++)
-    {
-       sum += parseFloat(tabNotes[i]);
-    }
-    return sum;
+    votreChoix = prompt("Saisissez un choix valide");
 }
 
+let monnaies = 0;
 
+let pieces = prompt(votreChoix + " Prix = {0}".replace("{0}",price) +"\nPièces acceptées 10cts 20cts 50cts 1€ 2€");
 
+while (pieces == "" ||  parseFloat(pieces) > 2 || parseFloat(pieces) < 0.1 || parseFloat(price) != 0 )
+{
+    pieces = prompt(votreChoix + " Prix = {0}".replace("{0}",price) +"\nPièces acceptées 10cts 20cts 50cts 1€ 2€");
+    let reste = getResteMonnaies(pieces);
+    parseFloat(price) = parseFloat(price) - parseFloatfloat(reste);
+}
 
-
+function getResteMonnaies(money)
+{
+    return money += money;
+}
