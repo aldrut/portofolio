@@ -239,32 +239,42 @@
 
 // console.log(parseFloat(a).toFixed(1));
 
+//GENERER ALEATOIREMENT UN PRIX ENTRE 0.5 ET 1.5
 function getRandomPrice(min, max)
 {
     return Math.random() * (max-min)+min;
 }
-
+//CALCULER LE RESTE DE LA COMMANDE
+function getResteMonnaies(money)
+{
+    return price -= parseFloat(money);
+}
+//OBTENTION D'UN PRIX
 let price = getRandomPrice(0.5,1.5).toFixed(1);
-
-
+//ON DEMANDE LE CHOIX DE LA COMMANDE
 let votreChoix = prompt("Votre choix");
 while (votreChoix == "" )
 {
     votreChoix = prompt("Saisissez un choix valide");
 }
-
-let monnaies = 0;
-
+//ON LUI DEMANDE D'INSÉRER LES PIECES
 let pieces = prompt(votreChoix + " Prix = {0}".replace("{0}",price) +"\nPièces acceptées 10cts 20cts 50cts 1€ 2€");
 
 while (pieces == "" ||  parseFloat(pieces) > 2 || parseFloat(pieces) < 0.1 || parseFloat(price) != 0 )
 {
     pieces = prompt(votreChoix + " Prix = {0}".replace("{0}",price) +"\nPièces acceptées 10cts 20cts 50cts 1€ 2€");
     let reste = getResteMonnaies(pieces);
-    parseFloat(price) = parseFloat(price) - parseFloatfloat(reste);
+    price = parseFloat(price) - parseFloatfloat(reste);
 }
 
-function getResteMonnaies(money)
-{
-    return money += money;
-}
+
+
+let rendreMonnaies = 0;
+
+
+
+
+
+
+
+
