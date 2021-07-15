@@ -21,13 +21,11 @@
 
 // let chiffre, table;
 
-
 // do
 // {
 //     chiffre = prompt("Saisissez un chiffre entre 1 et 10");
-// } 
+// }
 // while (chiffre == "" || isNaN(parseInt(chiffre)) || parseInt(chiffre) < 1 || parseInt(chiffre) > 10);
-
 
 // console.log("Table de " + chiffre.toString());
 
@@ -60,12 +58,10 @@
 // {
 //     alert("je n'ai pas compris");
 
-
 // }
 
-// Exo JS : Demander à l'utilisateur de saisir une date puis vérifier que celle-ci est exacte. 
+// Exo JS : Demander à l'utilisateur de saisir une date puis vérifier que celle-ci est exacte.
 //On demande le jour, puis le mois, puis l'année et on vérifie enfin que cette date est correcte.
-
 
 // function treatDate()
 // {
@@ -85,33 +81,54 @@
 //EXO demander la saisie d'une phrase
 //lui indiquer combien de consonnes et de voyelles
 
-let maPhrase = prompt("Ecrivez une phrase svp ?");
-let total = maPhrase.length;
-let cpt;
-let consonne;
+// let maPhrase = prompt("Ecrivez une phrase svp ?");
+// let vowelsCount =0, numberCount =0 , consCount =0, otherChar = 0;
+// let vowels = "aeiouyéèê";
+// let consonant ="zrtpmlkjhgfdsqwxcvbn";
+// let number = "0123456789";
 
-function voyelleConsonne(value) 
+// function voyelleConsonne(mot) {
+  
+// Array.from(mot).forEach(element => {
+
+//     if(vowels.includes(element))
+//     {
+//         vowelsCount++;
+//     }
+//     else if(consonant.includes(element))
+//     {
+//         consCount++;
+//     }
+//     else if(number.includes(element))
+//     {
+//         numberCount++
+//     }
+//     else
+//     {
+// otherChar++;
+//     }
+      
+// });
+
+//   console.log(
+//     "Votre phrase : {0} contient {1} voyelles, {2} chiffres, {3} consonnes, {4} autre caractères."
+//       .replace("{0}", maPhrase)
+//       .replace("{1}", vowelsCount)
+//       .replace("{2}", numberCount )
+//       .replace("{3}", consCount)
+//       .replace("{4}",otherChar)
+//   );
+// }
+
+// voyelleConsonne(maPhrase);
+
+//Ex1 : Ecrire un algorithme qui demande à l’utilisateur un nombre compris entre 1 et 3 jusqu’à ce que la réponse convienne.
+
+let chiffre =  prompt("Veuillez saisir un chiffre entre 1 et 3 SVP");
+
+while(!parseInt(chiffre) == chiffre || chiffre >= 0 && chiffre <= 3)
 {
-    
-    let voyelles = ["a", "e", "i", "o", "u", "y"];
-
-    for (let i = 0; i < value.length; i++) 
-    {
-        for(let y =0; y < voyelles.length; y++)
-        {
-            if(value[i] == voyelles[y])
-            {
-                cpt++;
-            }
-        }
-       return cpt;
-    }
-    consonne = total - cpt; 
+    prompt("Veuillez saisir un chiffre valide entre 1 et 3 SVP");
 }
-
-
-voyelleConsonne(maPhrase);
-alert(cpt);
-alert(consonne);
-
+console.log("Merci, votre chiffre saisi {0} est bien compris entre 1 et 3".replace("{0}",chiffre));
 
