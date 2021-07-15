@@ -124,11 +124,117 @@
 
 //Ex1 : Ecrire un algorithme qui demande à l’utilisateur un nombre compris entre 1 et 3 jusqu’à ce que la réponse convienne.
 
-let chiffre =  prompt("Veuillez saisir un chiffre entre 1 et 3 SVP");
+// let chiffre =  prompt("Veuillez saisir un chiffre entre 1 et 3 SVP");
 
-while(!parseInt(chiffre) == chiffre || chiffre >= 0 && chiffre <= 3)
+
+// while(chiffre < 1 || chiffre >3 )
+// {
+//     alert("saisie erronnée, recommencez");
+//     chiffre = prompt("Veuillez saisir un chiffre valide entre 1 et 3 SVP");
+// }
+
+
+
+
+//Ex2 : Ecrire un algorithme qui demande un nombre compris entre 10 et 20, jusqu’à ce que la réponse convienne. 
+//En cas de réponse supérieure à 20, on fera apparaître un message : « Plus petit ! », et inversement, « Plus grand ! » si le nombre est inférieur à 10.
+
+// let nb = prompt("Veuillez saisir un chiffre entre 10 et 20 SVP");
+
+//  while(!(parseInt(nb) == nb && nb >=10 && nb <= 20))
+//  {
+//     if(parseInt(nb) >20)
+//     {
+//         alert('trop grand');
+//     }
+//     if(parseInt(nb) < 10)
+//     {
+//         alert('trop petit');
+//     }
+//     nb = prompt("Veuillez saisir un chiffre valide entre 10 et 20 SVP");
+//  }
+
+//Ex3 : Ecrire un algorithme qui demande un nombre de départ, et qui ensuite affiche les dix nombres suivants. 
+//Par exemple, si l'utilisateur entre le nombre 17, le programme affichera les nombres de 18 à 27. 
+//Utiliser une boucle while, puis réécrire l'algorithme avec une boucle do while et enfin avec une boucle for.
+
+// let nb = prompt("Veuillez saisir un chiffre SVP");
+// let i = 0;
+
+// while(i < 10)
+// {
+//     i++;
+//     alert(parseInt(nb)+i);
+// }
+
+// do{
+//     i++;
+//     alert(parseInt(nb)+i);10
+// }
+// while(i < 10)
+
+// for(i =0; i < 10; i++)
+// {
+//     alert(parseInt(nb)+i);
+// }
+
+// Ex4 : Ecrire un algorithme qui demande un nombre de départ, et qui calcule la somme des entiers jusqu’à ce nombre. 
+//Par exemple, si l’on entre 5, le programme doit calculer : 1 + 2 + 3 + 4 + 5 = 15
+
+
+// let nb = prompt("Veuillez saisir un chiffre SVP");
+// let j =0;
+// for( i = 0; i <= parseInt(nb); i++)
+// {
+//     j += i;
+    
+// }
+// alert(j) ;
+
+//Ex 5 : Ecrire un algorithme qui demande à l'utilisateur (un prof) de saisir les notes d'un élèves (compris entre 0 et 20). 
+//Si la saisie n'est pas une note valide l'indiquer à l'utilisateur. La saisie des notes s'arrête lorsque l'utilisateur saisie le mot END. 
+//L'algorithme doit alors afficher la moyenne des notes de l'élève ainsi que la note la plus élevée et la note la moins élevée. 
+//(petit conseil : utiliser un tableau pour stocker les notes saisies)
+
+
+
+let tabNotes = [];
+let noteCandidat;
+
+let nbNote = prompt("combien de note voulez vous saisir ?");
+
+for(let i = 1; i <= nbNote; i++)
 {
-    prompt("Veuillez saisir un chiffre valide entre 1 et 3 SVP");
+    noteCandidat = prompt("Veuillez saisir la note de l'élève n° " + i); 
+    while(!parseFloat(noteCandidat) || parseFloat(noteCandidat)< 0 || parseFloat(noteCandidat)>20)
+    {
+        noteCandidat = prompt("Veuillez saisir la note de l'élève n° " + i); 
+    }
+    tabNotes.push(noteCandidat);
 }
-console.log("Merci, votre chiffre saisi {0} est bien compris entre 1 et 3".replace("{0}",chiffre));
+
+let sumNotes = totalNotes(tabNotes);
+
+let moyenne = (parseFloat(sumNotes) / tabNotes.length);
+
+console.log("Votre moyenne est de {0}. La note la plus haute est {1} et la plus basse est {2}".replace("{0}",parseFloat(moyenne))
+.replace("{1}", Math.max(...tabNotes))
+.replace("{2}", Math.min(...tabNotes)));
+
+
+
+
+function totalNotes(tableau)
+{
+    let sum = 0;
+    for(let i = 0; i < tableau.length; i++)
+    {
+       sum += parseFloat(tabNotes[i]);
+    }
+    return sum;
+}
+
+
+
+
 
