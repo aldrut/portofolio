@@ -247,7 +247,7 @@ function getRandomPrice(min, max)
 //CALCULER LE RESTE DE LA COMMANDE
 function getResteMonnaies(money)
 {
-    return price -= parseFloat(money);
+    return price -= parseFloat(money).toFixed(1);
 }
 //OBTENTION D'UN PRIX
 let price = getRandomPrice(0.5,1.5).toFixed(1);
@@ -262,19 +262,16 @@ let pieces = prompt(votreChoix + " Prix = {0}".replace("{0}",price) +"\nPièces 
 
 while (pieces == "" ||  parseFloat(pieces) > 2 || parseFloat(pieces) < 0.1 || parseFloat(price) != 0 )
 {
-    pieces = prompt(votreChoix + " Prix = {0}".replace("{0}",price) +"\nPièces acceptées 10cts 20cts 50cts 1€ 2€");
     let reste = getResteMonnaies(pieces);
-    price = parseFloat(price) - parseFloatfloat(reste);
+    while(reste > 0)
+    {
+        pieces = prompt(votreChoix + " Reste = {0}".replace("{0}",reste) +"\nPièces acceptées 10cts 20cts 50cts 1€ 2€");
+        reste = getResteMonnaies(pieces);
+    }
+    break;
+    
+    
 }
 
-
-
-let rendreMonnaies = 0;
-
-
-
-
-
-
-
+alert("voici votre commande");
 
