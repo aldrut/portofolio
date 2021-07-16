@@ -1,0 +1,25 @@
+/*
+Installer 
+*/
+$count :0;
+$color : #00ff00;
+$step : 8;
+
+@while $count < 36 {
+
+    .bg-#{$count} {
+        background-color: adjust-hue($color, ($count * $step))
+
+    }
+    $count: $count + 1;
+}
+$count1 : 0;
+@while $count1 <= 6
+{
+    /*hastag pour récupérer le nom de la variable*/
+    .m-#{$count1}
+    {
+        margin: ($count1 * 5)px;
+    }
+    $count1: $count1 + 1;
+}

@@ -239,6 +239,21 @@
 
 // console.log(parseFloat(a).toFixed(1));
 
+
+//OBTENTION D'UN PRIX
+let price = getRandomPrice(0.5,1.5).toFixed(1);
+//GENERER TABLEAU GOURMANDISE
+
+let tabMenu = ["Barre chocolat", "M&S","Chips nature","Chips goût"]
+
+for(let i =0; i < 10; i++)
+{
+    obj.
+}
+
+
+
+
 //GENERER ALEATOIREMENT UN PRIX ENTRE 0.5 ET 1.5
 function getRandomPrice(min, max)
 {
