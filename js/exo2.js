@@ -206,7 +206,7 @@
 // for(let i = 1; i <= nbNote; i++)
 // {
 //     noteCandidat = prompt("Veuillez saisir la note de l'élève n° " + i); 
-//     while(!parseFloat(noteCandidat) || parseFloat(noteCandidat)< 0 || parseFloat(noteCandidat)>20)
+//     while(!parseFloat(noteCandidat) == noteCandidat || parseFloat(noteCandidat)< 0 || parseFloat(noteCandidat)>20)
 //     {
 //         noteCandidat = prompt("Veuillez saisir la note de l'élève n° " + i); 
 //     }
@@ -239,54 +239,82 @@
 
 // console.log(parseFloat(a).toFixed(1));
 
+document.title = "Distributeur de confiserie";
+let 
 
-//OBTENTION D'UN PRIX
-let price = getRandomPrice(0.5,1.5).toFixed(1);
+let Produit = class tabProduits
+{
+    constructor(Code,Libelle,Prix)
+    {
+        this.Code = Code;
+        this.Libelle = Libelle;
+        this.Prix = Prix;
+    }
+
+}
+
+let listeProduit = ["Twix","Mars","Bounty","Chips","Kit-KAT", "Kinder Bueno","Cristaline","Evian","Coca","Sprite"];
+
 //GENERER TABLEAU GOURMANDISE
-
-let tabMenu = ["Barre chocolat", "M&S","Chips nature","Chips goût"]
 
 for(let i =0; i < 10; i++)
 {
-    obj.
+    //AJOUT DU CODE
+    Produit.Code = "A"+i;
+    //AJOUT PRODUIT
+    Produit.Libelle = listeProduit[i];
+    //OBTENTION D'UN PRIX
+    Produit.Prix = getRandomPrice(0.5,1.5).toFixed(1);
+    
+    
+    
 }
+
+let demanderCode = prompt("Veuillez saisir un code entre A0 et A9");
+
+ while (demanderCode == "" && 
+ Produit.array.forEach(element => { if(element.Code != demanderCode) return false; })
+    )
+    {
+        demanderCode = prompt("Donnée non valide - Veuillez saisir un code entre A0 et A9");  
+    }
 
 
 
 
 //GENERER ALEATOIREMENT UN PRIX ENTRE 0.5 ET 1.5
-function getRandomPrice(min, max)
-{
-    return Math.random() * (max-min)+min;
-}
+ function getRandomPrice(min, max)
+ {
+     return Math.random() * (max-min)+min;
+ }
 //CALCULER LE RESTE DE LA COMMANDE
-function getResteMonnaies(money)
-{
-    return price -= parseFloat(money).toFixed(1);
-}
+// function getResteMonnaies(money)
+// {
+//     return price -= parseFloat(money).toFixed(1);
+// }
 //OBTENTION D'UN PRIX
-let price = getRandomPrice(0.5,1.5).toFixed(1);
+// let price = getRandomPrice(0.5,1.5).toFixed(1);
 //ON DEMANDE LE CHOIX DE LA COMMANDE
-let votreChoix = prompt("Votre choix");
-while (votreChoix == "" )
-{
-    votreChoix = prompt("Saisissez un choix valide");
-}
-//ON LUI DEMANDE D'INSÉRER LES PIECES
-let pieces = prompt(votreChoix + " Prix = {0}".replace("{0}",price) +"\nPièces acceptées 10cts 20cts 50cts 1€ 2€");
+// let votreChoix = prompt("Votre choix");
+// while (votreChoix == "" )
+// {
+//     votreChoix = prompt("Saisissez un choix valide");
+// }
+// //ON LUI DEMANDE D'INSÉRER LES PIECES
+// let pieces = prompt(votreChoix + " Prix = {0}".replace("{0}",price) +"\nPièces acceptées 10cts 20cts 50cts 1€ 2€");
 
-while (pieces == "" ||  parseFloat(pieces) > 2 || parseFloat(pieces) < 0.1 || parseFloat(price) != 0 )
-{
-    let reste = getResteMonnaies(pieces);
-    while(reste > 0)
-    {
-        pieces = prompt(votreChoix + " Reste = {0}".replace("{0}",reste) +"\nPièces acceptées 10cts 20cts 50cts 1€ 2€");
-        reste = getResteMonnaies(pieces);
-    }
-    break;
+// while (pieces == "" ||  parseFloat(pieces) > 2 || parseFloat(pieces) < 0.1 || parseFloat(price) != 0 )
+// {
+//     let reste = getResteMonnaies(pieces);
+//     while(reste > 0)
+//     {
+//         pieces = prompt(votreChoix + " Reste = {0}".replace("{0}",reste) +"\nPièces acceptées 10cts 20cts 50cts 1€ 2€");
+//         reste = getResteMonnaies(pieces);
+//     }
+//     break;
     
     
-}
+// }
 
-alert("voici votre commande");
+// alert("voici votre commande");
 
