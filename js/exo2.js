@@ -366,11 +366,11 @@ document.title = "Distributeur de confiserie";
 
 // alert("voici votre commande");
 //Automate rendu monnaie
-function getRandom(min, max){
-    return Math.random() * (max - min) + min;
-}
+// function getRandom(min, max){
+//     return Math.random() * (max - min) + min;
+// }
 
-let fondCaisse =[[5,2],[10,3],[20,4],[50,2],[100,5],[200,10]];
+// let fondCaisse =[[5,2],[10,3],[20,4],[50,2],[100,5],[200,10]];
 
 
 // alert(fondCaisse[0][1]);
@@ -379,95 +379,147 @@ let fondCaisse =[[5,2],[10,3],[20,4],[50,2],[100,5],[200,10]];
 
 
 // let prixChoisi = parseFloat(getRandom(0.50,1.50).toFixed(1)) * 100;
-alert("Prix de l'article choisi " + prixChoisi + " cts");
+// alert("Prix de l'article choisi " + prixChoisi + " cts");
 
-let montantInsere = 0;
-let tableauPieces = [5, 10, 20, 50, 100, 200];
-while(montantInsere < prixChoisi){
-    let saisie = prompt("Inserer votre monnaie svp.");
-    let test = isNaN(saisie) || !saisie || !tableauPieces.includes(parseInt(saisie))
-    while(isNaN(saisie) || !saisie || !tableauPieces.includes(parseInt(saisie))){
-        saisie = prompt("Inserer votre monnaie svp.");
-    }
-    montantInsere += parseInt(saisie);
-    Array.from(fondCaisse).forEach(x =>
-        {
-        if(x[0] == saisie )
-        {
-            x[1]++;
+// let montantInsere = 0;
+// let tableauPieces = [5, 10, 20, 50, 100, 200];
+// while(montantInsere < prixChoisi){
+//     let saisie = prompt("Inserer votre monnaie svp.");
+//     let test = isNaN(saisie) || !saisie || !tableauPieces.includes(parseInt(saisie))
+//     while(isNaN(saisie) || !saisie || !tableauPieces.includes(parseInt(saisie))){
+//         saisie = prompt("Inserer votre monnaie svp.");
+//     }
+//     montantInsere += parseInt(saisie);
+//     Array.from(fondCaisse).forEach(x =>
+//         {
+//         if(x[0] == saisie )
+//         {
+//             x[1]++;
 
-        }
-        });
-}
-//
-let monnaieARendre = montantInsere - prixChoisi;
-let renduMonnaieMsg = "";
-if(monnaieARendre >= 100){
-    //1€
-    renduMonnaieMsg += "1€-";
-    monnaieARendre -= 100;
-    Array.from(fondCaisse).forEach(x =>
-        {
-        if(x[0] == 100 && x[0] > 0 )
-        {
-            x[1] = x[1]-1;
+//         }
+//         });
+// }
+// //
+// let monnaieARendre = montantInsere - prixChoisi;
+// let renduMonnaieMsg = "";
+// if(monnaieARendre >= 100){
+//     //1€
+//     renduMonnaieMsg += "1€-";
+//     monnaieARendre -= 100;
+//     Array.from(fondCaisse).forEach(x =>
+//         {
+//         if(x[0] == 100 && x[0] > 0 )
+//         {
+//             x[1] = x[1]-1;
 
-        }
-        });
+//         }
+//         });
 
-}
-while(monnaieARendre >= 50){
-    renduMonnaieMsg += "50 cts-";
-    monnaieARendre -= 50;
-    Array.from(fondCaisse).forEach(x =>
-        {
-        if(x[0] == 50 && x[0] > 0 )
-        {
-            x[1] = x[1]-1;
+// }
+// while(monnaieARendre >= 50){
+//     renduMonnaieMsg += "50 cts-";
+//     monnaieARendre -= 50;
+//     Array.from(fondCaisse).forEach(x =>
+//         {
+//         if(x[0] == 50 && x[0] > 0 )
+//         {
+//             x[1] = x[1]-1;
 
-        }
-        });
-}
-while(monnaieARendre >= 20){
-    renduMonnaieMsg += "20 cts-";
-    monnaieARendre -= 20;
-    Array.from(fondCaisse).forEach(x =>
-        {
-        if(x[0] == 20  && x[0] > 0 )
-        {
-            x[1] = x[1]-1;
+//         }
+//         });
+// }
+// while(monnaieARendre >= 20){
+//     renduMonnaieMsg += "20 cts-";
+//     monnaieARendre -= 20;
+//     Array.from(fondCaisse).forEach(x =>
+//         {
+//         if(x[0] == 20  && x[0] > 0 )
+//         {
+//             x[1] = x[1]-1;
 
-        }
-        });
-}
-while(monnaieARendre >= 10){
-    renduMonnaieMsg += "10 cts-";
-    monnaieARendre -= 10;
-    Array.from(fondCaisse).forEach(x =>
-        {
-        if(x[0] == 10  && x[0] > 0  )
-        {
-            x[1] = x[1]-1;
+//         }
+//         });
+// }
+// while(monnaieARendre >= 10){
+//     renduMonnaieMsg += "10 cts-";
+//     monnaieARendre -= 10;
+//     Array.from(fondCaisse).forEach(x =>
+//         {
+//         if(x[0] == 10  && x[0] > 0  )
+//         {
+//             x[1] = x[1]-1;
 
-        }
-        });
-}
-while(monnaieARendre >= 5){
-    renduMonnaieMsg += "5 cts-";
-    monnaieARendre -= 5;
-    Array.from(fondCaisse).forEach(x =>
-        {
-        if(x[0] == 5 && x[0] > 0  )
-        {
-            x[1] = x[1]-1;
+//         }
+//         });
+// }
+// while(monnaieARendre >= 5){
+//     renduMonnaieMsg += "5 cts-";
+//     monnaieARendre -= 5;
+//     Array.from(fondCaisse).forEach(x =>
+//         {
+//         if(x[0] == 5 && x[0] > 0  )
+//         {
+//             x[1] = x[1]-1;
 
-        }
-        });
-}
-alert(renduMonnaieMsg);
+//         }
+//         });
+// }
+// alert(renduMonnaieMsg);
+
 
  
+let header1 = document.getElementById('header1');
+let header2 = document.querySelector('#header1');
+
+let links = document.getElementsByTagName('a');
+let links2 = document.querySelectorAll('.nav-link');
+
+let navlinks = document.getElementsByClassName('nav-link');
+let navlinks2 = document.querySelector('.nav-link');
+
+
+//récupérer les éléments de type section
+
+let sectionList = document.getElementsByTagName('section');
+let sectionList2 = document.querySelectorAll('section');
+ 
+//récupérer les éléments de type footerid
+let footerId = document.getElementById('footerId');
+let sectionList3 = document.querySelector('#footerId');
+
+//récupérer les éléments de type class
+let footerId2 = document.getElementsByClassName('secTitle');
+let sectionList4 = document.querySelectorAll('.secTitle');
+
+//l'élément h2.sectitle de la section#sectId
+let selector = document.querySelector('#sectId .secTitle')
+
+//changer le nom du lien
+let accueil = document.querySelector('[href="#accueil"]');
+accueil.innerText = "Accueil";
+accueil.innerHTML = '<img src="/img/AspNetCore.png" alt="asp.net">';
+
+//remplacer le texte du footer par "Cet élément est le footer de la page"
+
+let footerPage = document.querySelector("#footerText p");
+footerPage.innerText = "Cet élément est le footer de la page";
+
+//insérer une image
+
+footerPage.innerHTML = '<img src="/img/expresso.jpg" alt="asp.net">';
+
+//ajouter ou supprimer class
+let elH2 = document.querySelector('#sectId2 h2');
+elH2.classList.remove('title');
+elH2.classList.add('display-none');
+
+//récupérer h1 de la page lui enlever la class title et ajouter class bg-red
+let elH1 = document.querySelector('#titrePrincipal h1');
+elH1.classList.remove('title');
+elH1.classList.add('bg-red');
 
 
 
+
+ 
 let bp;

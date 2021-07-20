@@ -17,3 +17,20 @@
 {
     cursor: pointer;
 }
+
+.nav-link
+{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.title
+{
+    background-color: rosybrown;
+}
+.bg-red
+{
+    background-color: red;
+}
+.display-none
+{
+    display: none;
+}
