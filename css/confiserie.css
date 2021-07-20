@@ -6,3 +6,14 @@
     font-weight: bolder;
     font-family: "Comic sans MS";
 }
+
+.article
+{
+    cursor: pointer;
+    min-height:  100px;
+}
+
+.piece
+{
+    cursor: pointer;
+}

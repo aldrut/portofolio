@@ -240,53 +240,101 @@
 // console.log(parseFloat(a).toFixed(1));
 
 document.title = "Distributeur de confiserie";
-let 
 
-let Produit = class tabProduits
-{
-    constructor(Code,Libelle,Prix)
-    {
-        this.Code = Code;
-        this.Libelle = Libelle;
-        this.Prix = Prix;
-    }
+// class Money {
+//     constructor(nbCoin2, nbCoin1, nbCent50, nbCent20, nbCent10) {
+//         this.nbCoin2 = nbCoin2;
+//         this.nbCoin1 = nbCoin1;
+//         this.nbCent50 = nbCent50;
+//         this.nbCent20 = nbCent20;
+//         this.nbCent10 = nbCent10;
+//     }
+// }
 
-}
+// class Products {
+//     constructor(Code, Libelle, Prix) {
+//         this.Code = Code;
+//         this.Libelle = Libelle;
+//         this.Prix = Prix;
+//     }
+// }
+// let MoneyTab = new Money();
+// MoneyTab.Coin2 = 0;
+// MoneyTab.Coin1 = 0;
+// MoneyTab.Cent50 = 0;
+// MoneyTab.Cent20 = 0;
+// MoneyTab.Cent10 = 0;
 
-let listeProduit = ["Twix","Mars","Bounty","Chips","Kit-KAT", "Kinder Bueno","Cristaline","Evian","Coca","Sprite"];
+
+
+// let ProductList = 
+// [
+//     "Twix","Mars","Bounty","Chips","Kit-KAT","Thé au citron", "Potage Tomate",
+//     "Kinder Bueno","Cristaline","Evian","Coca","Thé à la menthe",
+//     "Sprite","Expresso court","Expresso long","Chocolat"
+// ];
+
+// let nbLine = Math.ceil(ProductList.length /4);
+
+// let section1 = document.querySelector("#section1");
+
+// for(let j =0; j < nbLine; j++)
+// {
+//     section1.innerHTML = "<div class='row>'<div class='col-4'>";
+//     for(let h=0; h < 4; h++)
+//     {
+//         section1.innerHTML = "<div class='card' style='width: 18rem;'>";
+//         section1.innerHTML = "<img class='card-img-top' src='/img/expresso.jpg' alt='Expresso'>";
+//         section1.innerHTML = "<div class='card-body'>";
+        
+        
+//           <h5 class="card-title">Expresso</h5>
+//           <p class="card-text">Café long en grain</p>
+//           <button class="btn btn-primary btn-block" id="btn2"></button>
+//         </div>
+//       </div>";
+//     }
+
+// }
+// section1.innerHTML = "";
+// section1.innerHTML = "</div></div>";
+
+
+
+
 
 //GENERER TABLEAU GOURMANDISE
-
-for(let i =0; i < 10; i++)
-{
-    //AJOUT DU CODE
-    Produit.Code = "A"+i;
-    //AJOUT PRODUIT
-    Produit.Libelle = listeProduit[i];
-    //OBTENTION D'UN PRIX
-    Produit.Prix = getRandomPrice(0.5,1.5).toFixed(1);
+// let productsTab = new Products();
+// for(let i =0; i < ProductList.length; i++)
+// {
+//     //AJOUT DU CODE
+//     productsTab.Code = "A"+i;
+//     //AJOUT PRODUIT
+//     productsTab.Libelle = ProductList[i];
+//     //OBTENTION D'UN PRIX
+//     productsTab.Prix = getRandomPrice(0.5,1.5).toFixed(1);
     
     
     
-}
+// }
 
-let demanderCode = prompt("Veuillez saisir un code entre A0 et A9");
+//let demanderCode = prompt("Veuillez saisir un code entre A0 et A9");
 
- while (demanderCode == "" && 
- Produit.array.forEach(element => { if(element.Code != demanderCode) return false; })
-    )
-    {
-        demanderCode = prompt("Donnée non valide - Veuillez saisir un code entre A0 et A9");  
-    }
+//  while (demanderCode == "" && 
+//  Produit.array.forEach(element => { if(element.Code != demanderCode) return false; })
+//     )
+//     {
+//         demanderCode = prompt("Donnée non valide - Veuillez saisir un code entre A0 et A9");  
+//     }
 
 
 
 
 //GENERER ALEATOIREMENT UN PRIX ENTRE 0.5 ET 1.5
- function getRandomPrice(min, max)
- {
-     return Math.random() * (max-min)+min;
- }
+//  function getRandomPrice(min, max)
+//  {
+//      return Math.random() * (max-min)+min;
+//  }
 //CALCULER LE RESTE DE LA COMMANDE
 // function getResteMonnaies(money)
 // {
@@ -317,4 +365,109 @@ let demanderCode = prompt("Veuillez saisir un code entre A0 et A9");
 // }
 
 // alert("voici votre commande");
+//Automate rendu monnaie
+function getRandom(min, max){
+    return Math.random() * (max - min) + min;
+}
 
+let fondCaisse =[[5,2],[10,3],[20,4],[50,2],[100,5],[200,10]];
+
+
+// alert(fondCaisse[0][1]);
+
+
+
+
+// let prixChoisi = parseFloat(getRandom(0.50,1.50).toFixed(1)) * 100;
+alert("Prix de l'article choisi " + prixChoisi + " cts");
+
+let montantInsere = 0;
+let tableauPieces = [5, 10, 20, 50, 100, 200];
+while(montantInsere < prixChoisi){
+    let saisie = prompt("Inserer votre monnaie svp.");
+    let test = isNaN(saisie) || !saisie || !tableauPieces.includes(parseInt(saisie))
+    while(isNaN(saisie) || !saisie || !tableauPieces.includes(parseInt(saisie))){
+        saisie = prompt("Inserer votre monnaie svp.");
+    }
+    montantInsere += parseInt(saisie);
+    Array.from(fondCaisse).forEach(x =>
+        {
+        if(x[0] == saisie )
+        {
+            x[1]++;
+
+        }
+        });
+}
+//
+let monnaieARendre = montantInsere - prixChoisi;
+let renduMonnaieMsg = "";
+if(monnaieARendre >= 100){
+    //1€
+    renduMonnaieMsg += "1€-";
+    monnaieARendre -= 100;
+    Array.from(fondCaisse).forEach(x =>
+        {
+        if(x[0] == 100 && x[0] > 0 )
+        {
+            x[1] = x[1]-1;
+
+        }
+        });
+
+}
+while(monnaieARendre >= 50){
+    renduMonnaieMsg += "50 cts-";
+    monnaieARendre -= 50;
+    Array.from(fondCaisse).forEach(x =>
+        {
+        if(x[0] == 50 && x[0] > 0 )
+        {
+            x[1] = x[1]-1;
+
+        }
+        });
+}
+while(monnaieARendre >= 20){
+    renduMonnaieMsg += "20 cts-";
+    monnaieARendre -= 20;
+    Array.from(fondCaisse).forEach(x =>
+        {
+        if(x[0] == 20  && x[0] > 0 )
+        {
+            x[1] = x[1]-1;
+
+        }
+        });
+}
+while(monnaieARendre >= 10){
+    renduMonnaieMsg += "10 cts-";
+    monnaieARendre -= 10;
+    Array.from(fondCaisse).forEach(x =>
+        {
+        if(x[0] == 10  && x[0] > 0  )
+        {
+            x[1] = x[1]-1;
+
+        }
+        });
+}
+while(monnaieARendre >= 5){
+    renduMonnaieMsg += "5 cts-";
+    monnaieARendre -= 5;
+    Array.from(fondCaisse).forEach(x =>
+        {
+        if(x[0] == 5 && x[0] > 0  )
+        {
+            x[1] = x[1]-1;
+
+        }
+        });
+}
+alert(renduMonnaieMsg);
+
+ 
+
+
+
+let bp;
