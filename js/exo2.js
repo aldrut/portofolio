@@ -518,8 +518,41 @@ let elH1 = document.querySelector('#titrePrincipal h1');
 elH1.classList.remove('title');
 elH1.classList.add('bg-red');
 
+// for(let i=0; i < sectionList2.length; i++ )
+// {
+//     sectionList2[i].innerText = "source" + i;
+// }
 
+// let clickLink = document.querySelector('.nav-link');
+// clickLink.addEventListener('click',clickNavLink);
+// function clickNavLink()
+// {
+//     alert('toto');
+    
+// }
+// let imageToChange = document.querySelector('#imgToChange img');
+// imageToChange.addEventListener('mouseover',moveImage);
+// function moveImage()
+// {
 
+// alert('toto');
+// }
 
+let liList = document.querySelectorAll('.nav-link');
+
+for (let i =0; i < liList.length; i++)
+{
+    liList[i].addEventListener('click',function() {
+        modifyText(this,i);
+    });
+}
+
+function modifyText(event,h)
+{
+    event.target.innerText = "cliqué" +h;
+
+    //this.innerText = "cliqué";
+}
+ 
  
 let bp;
