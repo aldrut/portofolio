@@ -2,21 +2,16 @@
 {
     text-transform: uppercase;
     font-size: 3em;
-    text-decoration: underline;
-    
     text-align: center;
     margin: 1px;
 }
 .divPointer
 {
     cursor: pointer;
-    background-color: seagreen;
     
 }
 
-div[class^=divPointer]:hover
+div:hover
 {
-    background-color: rgb(3, 19, 10);
-
-
+    color: rgb(38, 255, 0);
 }
