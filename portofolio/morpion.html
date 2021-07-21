@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/morpion.css">    
-<title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/morpion.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title></title>
 </head>
+
 <body class="bg-warning">
     <div class="container-fluid">
         <div class="row bg-dark">
@@ -16,61 +22,116 @@
                 <span class="titleMorpion text-light"> Jeu du morpion</span>
             </div>
         </div>
+   
+         
         <div class="row p-5">
             <div class="col">
-                <div class="row ">
+                <div class="row">
                     <div class="col">
-                        <div class="nomJoueur bg-secondary">
-                            <span class="text-white">Statut du joueur :</span></div>
-                        <div><span id="nomJoueurEnCours"></span></div>
-                        <div><span id="message"></span></div>
+                        <div class="row ">
+                            <div class="col">
+                                <div class="nomJoueur bg-secondary">
+                                    <span class="text-white">Statut du joueur :</span>
+                                </div>
+                                <div><span id="nomJoueurEnCours"></span></div>
+                                <div><span id="message"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <button class="col borderTab" id="R0C0"></button>
+                            <button class="col borderTab" id="R0C1"></button>
+                            <button class="col borderTab" id="R0C2"></button>
+                        </div>
+                        <div class="row">
+                            <button class="col borderTab" id="R1C0"></button>
+                            <button class="col borderTab" id="R1C1"></button>
+                            <button class="col borderTab" id="R1C2"></button>
+                        </div>
+                        <div class="row">
+                            <button class="col borderTab" id="R2C0"></button>
+                            <button class="col borderTab" id="R2C1"></button>
+                            <button class="col borderTab" id="R2C2"></button>
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
+                                data-bs-target="#myModal">Démarrer le jeu
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-primary mb-2" id="btnStart">Remise à
+                                zéro</button>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal"
+                                data-bs-target="#myModalAbout">About Tic Tac Toe</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Inscription des joueurs</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="myForm">
+                                    <div class="mb-3">
+                                        <label class="form-label required">Nom du Joueur 1</label>
+                                        <input id="txtJ1" type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label required">Nom du joueur 2</label>
+                                        <input id="txtJ2" type="email" class="form-control">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="btnSubmit" type="submit" class="btn btn-primary" onclick="newPlayer()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal bg-dark" id="myModalAbout">
+                    <div class="modal-dialog  modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Règles du jeu</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label" style="text-align:justify">
+                                        Le Morpion, également appelé Tic-Tac-Toe se joue sur une grille carrée
+                                        de 3x3 cases. <br>
+                                        Deux joueurs, vous et l'ordinateur s'affrontent. Ils doivent remplir
+                                        chacun à leur tour une case de la grille avec le symbole qui leur est
+                                        attribué : O ou X.
+                                        <br>
+
+                                        Le gagnant est celui qui arrive à aligner trois symboles identiques,
+                                        horizontalement, verticalement ou en diagonale.</label>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="row">
-                    <button class="col borderTab" id="R0C0"></button>
-                    <button class="col borderTab" id="R0C1"></button>
-                    <button class="col borderTab" id="R0C2"></button>
-                </div>
-                <div class="row">
-                    <button class="col borderTab" id="R1C0"></button>
-                    <button class="col borderTab" id="R1C1"></button>
-                    <button class="col borderTab" id="R1C2"></button>
-                </div>
-                <div class="row">
-                    <button class="col borderTab" id="R2C0"></button>
-                    <button class="col borderTab" id="R2C1"></button>
-                    <button class="col borderTab" id="R2C2"></button>
-                </div>
-               
-            </div>
-            <div class="col d-flex align-items-center ">
-                <button type="button" class="btn btn-primary btn-lg" id="btnStart">Remise à zéro</button>
-                <button type="button" class="btn btn-primary btn-lg m-5" data-toggle="modal" 
-                data-target="#exampleModal" id="btnAbout">About Tic Tac Toe</button>
-            </div>
         </div>
-
-      
-    </div>
-    <div class="modal" tabindex="-1" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModal" >Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div> 
     <script src="/js/morpion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+       
 </body>
+
 </html>

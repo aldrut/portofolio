@@ -11,6 +11,8 @@
     border-top: 0px;
     border-left: 0px;
     margin: 3px;
+    font-size: 120px;
+    text-align: middle;
 
 }
 
@@ -21,4 +23,18 @@
     font-size:  2em;
     text-align: center;
     padding: 5px;
+}
+.modal-header {
+    background: #F7941E;
+    color: #fff;
+}
+
+.required:after {
+    content: "*";
+    color: red;
+}
+
+.hidden
+{
+    display: none;
 }
