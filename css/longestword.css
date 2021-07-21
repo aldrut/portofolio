@@ -1,0 +1,22 @@
+.affichageText
+{
+    text-transform: uppercase;
+    font-size: 3em;
+    text-decoration: underline;
+    
+    text-align: center;
+    margin: 1px;
+}
+.divPointer
+{
+    cursor: pointer;
+    background-color: seagreen;
+    
+}
+
+div[class^=divPointer]:hover
+{
+    background-color: rgb(3, 19, 10);
+
+
+}
