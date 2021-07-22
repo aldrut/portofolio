@@ -25,7 +25,7 @@ for (let i = 0; i < 1; i++) {
   /*Insertion dans page*/
   mainDiv.appendChild(elsC);
 }
-
+//CREATION DIV POUR AFFICHER LES VOYELLES
 for (let x = 0; x < 1; x++) {
   /*Creation de nos lignes*/
   let elsV = document.createElement("div");
@@ -39,23 +39,15 @@ for (let x = 0; x < 1; x++) {
     let col = document.createElement("div");
     col.setAttribute("class", "col affichageText text-white");
     col.innerHTML =
-      "<label for='alpha' id=" +
-      txtVoyelles +
-      " class='divPointer bg-div m-5' onclick='ecrireInDiv(" +
-      txtVoyelles +
-      ")');' >" +
-      txtVoyelles +
-      "</label>";
+      "<label for='alpha' id=" +txtVoyelles +" class='divPointer bg-div m-5' onclick='ecrireInDiv(" +txtVoyelles + ")');' >" + txtVoyelles + "</label>";
     elsV.append(col);
   }
+  /**Insertion dans page */
   mainDiv.appendChild(elsV);
 }
-
+//#region CREATION DIV POUR AFFICHER LA COMBO BOX
 let createDivRowQuestion = document.createElement("div");
-createDivRowQuestion.setAttribute(
-  "class",
-  "row d-flex justify-content-center text-center"
-);
+createDivRowQuestion.setAttribute("class","row d-flex justify-content-center text-center");
 
 let createDivCol1 = document.createElement("div");
 createDivCol1.setAttribute("class", "col justify-content-center");
@@ -67,18 +59,18 @@ select.classList.add("m-5");
 let opt1 = document.createElement("option");
 opt1.setAttribute("value", "");
 select.appendChild(opt1);
-
+/**Ajout des options */
 for (let p = 5; p <= 10; p++) {
   select.options[select.options.length] = new Option(p);
 }
-
+//#endregion
 createDivRowQuestion.appendChild(createDivCol1);
 
 let createLabel = document.createElement("label");
 createLabel.textContent = "Avec combien de lettres voulez-vous jouer ?";
 createDivCol1.appendChild(createLabel);
 createDivCol1.appendChild(select);
-
+/**Ajout d'un message d'erreur */
 let lblError = document.createElement("label");
 lblError.id = "lblError";
 lblError.setAttribute("for", "msgError");
@@ -87,27 +79,36 @@ lblError.innerText ="";
 lblError.style.visibility = "hidden";
 
 createDivCol1.appendChild(lblError);
-
+/**Affichage du bloc COMBO BOX */
 mainDiv.appendChild(createDivRowQuestion);
+/**GENERATION DU BLOCK DES LETTRES SELECTIONNEES  */
 let divRLettre, divCLettre,  divLettre;
 let tab = [];
+let valCombo;
+
 divRLettre = document.createElement("div");
 divRLettre.setAttribute("class","row");
 
 for(let d=0; d < 10; d++)
 {
   divCLettre = document.createElement("div");
-  divCLettre.setAttribute("class","col border-top-0 border-right-0 border-left-0 border-bottom-0 affichageText ");
+  divCLettre.setAttribute("class","col affichageText  ");
   divCLettre.style.height = "100px";
-  divCLettre.id = d;
-  tab.push(d);
-  divCLettre.innerText = "...";
+  /**Creation d'un span dans la div */
+  divCLettre.innerHTML = "<span id='sp"+d+"'>"+d+"</span>"
+  
+   
   divCLettre.addEventListener("click",ecrireInTextbox);
+  
   divRLettre.append(divCLettre);
 }
 
+let allSpan = document.querySelectorAll("span");
+tab.push(allSpan);
+
+
 mainDiv.append(divRLettre);
-let valCombo;
+
 function generateLetterCase(event) {
   valCombo = event.target.value;
   if (valCombo == "") {
@@ -117,6 +118,15 @@ function generateLetterCase(event) {
   } else {
     lblError.style.visibility = "hidden";
     lblError.innerText ="";
+  let span;
+     Array.from(tab).forEach(elt =>  
+       {
+        
+      span =  document.querySelector["#" + elt];
+      span.disabled = true;
+       }
+         );
+     
    
   }
 }
@@ -128,7 +138,7 @@ lineCMot1.setAttribute("class","col-10 p-5");
 let lineCMot2 = document.createElement("div");
 lineCMot2.setAttribute("class","col p-5");
 
-lineCMot1.innerHTML = "Veuillez entrer une réponse :" + " " + "<span id='txtReponse' class='form-control'></span>";
+lineCMot1.innerHTML = "Veuillez entrer une réponse :" + " " + "<input type='text' id='txtReponse' class='form-control' required></input>";
 
 lineRMot.appendChild(lineCMot1);
 lineRMot.appendChild(lineCMot2);
@@ -136,7 +146,7 @@ mainDiv.appendChild(lineRMot);
 
 function ecrireInTextbox(event)
 {
-  txtReponse.textContent += event.target.innerText;
+  document.querySelector('#txtReponse').value += event.target.innerText;
 }
 
 function ecrireInDiv(event) {
