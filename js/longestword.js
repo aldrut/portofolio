@@ -70,15 +70,15 @@ let createLabel = document.createElement("label");
 createLabel.textContent = "Avec combien de lettres voulez-vous jouer ?";
 createDivCol1.appendChild(createLabel);
 createDivCol1.appendChild(select);
-/**Ajout d'un message d'erreur */
-let lblError = document.createElement("label");
-lblError.id = "lblError";
-lblError.setAttribute("for", "msgError");
-lblError.innerText ="";
+// /**Ajout d'un message d'erreur */
+// let lblError = document.createElement("label");
+// lblError.id = "lblError";
+// lblError.setAttribute("for", "msgError");
+// lblError.innerText ="";
 
-lblError.style.visibility = "hidden";
+// lblError.style.visibility = "hidden";
 
-createDivCol1.appendChild(lblError);
+// createDivCol1.appendChild(lblError);
 /**Affichage du bloc COMBO BOX */
 mainDiv.appendChild(createDivRowQuestion);
 /**GENERATION DU BLOCK DES LETTRES SELECTIONNEES  */
@@ -112,12 +112,10 @@ mainDiv.append(divRLettre);
 function generateLetterCase(event) {
   valCombo = event.target.value;
   if (valCombo == "") {
-    lblError.style.visibility = "visible";
-    lblError.innerText = "La valeur sélectionnée ne peut pas être vide, veuillez réessayer";
+    DisplayMessage("error","La valeur sélectionnée ne peut pas être vide.");
   
   } else {
-    lblError.style.visibility = "hidden";
-    lblError.innerText ="";
+    
   let span;
      Array.from(tab).forEach(elt =>  
        {
@@ -134,9 +132,9 @@ function generateLetterCase(event) {
 let lineRMot = document.createElement("div");
 lineRMot.setAttribute("class","row p-5");
 let lineCMot1 = document.createElement("div");
-lineCMot1.setAttribute("class","col-10 p-5");
+lineCMot1.setAttribute("class","col-7 p-5");
 let lineCMot2 = document.createElement("div");
-lineCMot2.setAttribute("class","col p-5");
+lineCMot2.setAttribute("class","col p-5 ");
 
 lineCMot1.innerHTML = "Veuillez entrer une réponse :" + " " + "<input type='text' id='txtReponse' class='form-control' required></input>";
 
@@ -155,6 +153,7 @@ function ecrireInDiv(event) {
   {
     lblError.style.visibility = "visible";
     lblError.innerText = "La valeur sélectionnée ne peut pas être vide, veuillez réessayer";
+    DisplayMessage("error","error");
   }
   else
   {
@@ -163,8 +162,116 @@ function ecrireInDiv(event) {
       divCLettre.innerText = event.innerText;
     }
   }
-
-
-  // alert(value.innerHTML);
 }
 
+
+let btnCheck = document.createElement("button");
+btnCheck.setAttribute("class","a")
+let returnLblSearch = document.createElement("label");
+let txtResponse = document.querySelector('#txtReponse');
+btnCheck.innerHTML = "Vérifier" ;
+btnCheck.id = "btnCheck";
+btnCheck.setAttribute("class","btn btn-primary btn-lg p-1");
+
+btnCheck.addEventListener('click',  () =>
+{
+if(txtResponse.value == "")
+{
+  
+  DisplayMessage("error","Le champ est vide <br> merci de faire le nécesaire ") ;
+  
+}
+else
+{
+  Search(txtResponse.value);
+  
+  //DisplayMessage("good","Youpi");
+
+}
+});
+
+lineCMot2.appendChild(btnCheck)
+lineCMot2.appendChild(returnLblSearch);
+
+lineRMot.appendChild(lineCMot2);
+mainDiv.appendChild(lineRMot);
+
+
+
+function DisplayMessage(value, msg)
+{
+  // Get the modal
+let modal = document.querySelector("#myModal");
+
+// Get the button that opens the modal
+let btn = document.querySelector("#btnCheck");
+
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+
+// Get the p that display the message
+let p = document.querySelector("#msg");
+
+switch (value) {
+  case "error":
+    p.innerHTML =msg;
+    break;
+    case "good" :
+    p.innerHTML = msg;
+}
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+}
+
+async function Search(value)
+{
+let url = "https://en.wiktionary.org/w/api.php?action=query&list=search&srsearch="+value+"&format=json&origin=*";
+
+//  let resp = await fetch(url);
+//  let commits = await resp.json();
+//  let totalHits = await commits.query.searchinfo.totalhits;
+//  alert(totalHits);
+  // .then(resp => resp.json())
+  // .then(commits => alert(commits[0]));
+fetch(url)
+.then((response)=>{
+  if(response.status >=200 && response.status <=299)
+  {
+    return response.json();
+  } else {
+    throw Error(response.statusText)
+  }
+})
+.then((jsonResponse)=>
+{
+  let totalHits =  jsonResponse.query.searchinfo.totalhits;
+if(totalHits > 0)
+{
+  DisplayMessage("good","Félicitation !! le mot tapé est bien connu de notre base de données.")
+}
+else
+{
+  DisplayMessage("error","LOOSER");
+}
+})
+.catch((error) =>
+{
+  console.log(error);
+})
+
+}
