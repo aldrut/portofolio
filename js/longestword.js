@@ -250,6 +250,7 @@ let url = "https://en.wiktionary.org/w/api.php?action=query&list=search&srsearch
   // .then(commits => alert(commits[0]));
 fetch(url)
 .then((response)=>{
+  //vérifier le status de la response
   if(response.status >=200 && response.status <=299)
   {
     return response.json();
@@ -259,6 +260,7 @@ fetch(url)
 })
 .then((jsonResponse)=>
 {
+  //Recherche le nombre d'occurrence sur l'api
   let totalHits =  jsonResponse.query.searchinfo.totalhits;
 if(totalHits > 0)
 {
@@ -271,6 +273,7 @@ else
 })
 .catch((error) =>
 {
+  DisplayMessage("error",error);
   console.log(error);
 })
 
