@@ -1,11 +1,11 @@
 body
 {
     background-image: url("/img/planeta.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
     
-    background-color: rgb(34, 51, 80);
+    background-size: cover;
+    font-family: 'Segoe Print';
     color: #fff;
+
    
 }
 .colorLinkNav
@@ -13,11 +13,12 @@ body
     color: white;
 }
 
-.nav > a:hover
+.navbar > a:hover
 {
     color: rgb(199, 199, 199);
     text-transform: uppercase;
     text-decoration: underline;
+    font-weight: bold;
 }
 
 .divMain
@@ -28,7 +29,18 @@ body
 .spanContent
 {
     font-family: 'Segoe Print';
-    font-size: 4rem;
+    font-size: 3rem;
+}
+
+.borderTop
+{
+    border-top: red 1px solid;
+}
+
+.photo
+{
+    border-radius: 20px;
+    border: 0.3em solid #fff;
 }
 
 
